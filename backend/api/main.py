@@ -1,6 +1,7 @@
 from flask import Flask, request
 from flask_cors import CORS
 from Helpers.dbHelperclass import dbHelper as dbh
+from Helpers.OpenAiHelper import OpenAiHelper
 from bson import json_util
 import os
 import json
@@ -9,6 +10,7 @@ import json
 session_key = os.urandom(24).hex()
 
 conn = dbh("mongodb+srv://trendset:FIfRuK42erNOir02@trendset.plb5zxd.mongodb.net","trendset")
+helper = OpenAiHelper()
 
 app = Flask(__name__)
 cors = CORS(app, resources={r"/api/*": {"origins": "trendset.tech"}})
@@ -78,7 +80,13 @@ def getAllForUser(email):
 
 @app.route("/api/createBio/<name>/<descr>")
 def createBio(name, descr):
-    
+    helper.createBio()
+
+
+@app.route("/api/makeLogo/<prompt>")
+def createBio(name, descr):
+    pass
+
 
 @app.route("/")
 def hello_world():

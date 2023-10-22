@@ -14,7 +14,7 @@ class OpenAiHelper:
                 "```"
             }
             ])
-        print(completion.choices[0].message.content)
+        return completion.choices[0].message.content
     def makeLogo(self,prompt):
         
         res = self.ai.Image.create( 
