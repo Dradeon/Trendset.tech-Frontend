@@ -46,6 +46,7 @@ export default function Home() {
               <div className="flex justify-center">
                   <a className={"space mt-10"}> <i>"One card, for an unforgettable impression"</i></a>
               </div>
+              <br></br>
 
               <div className="flex-grow flex justify-center items-center bg-gray-100 p-4 border rounded shadow-md">
                   <section className="py-8">
