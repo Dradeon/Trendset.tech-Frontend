@@ -3,7 +3,6 @@ class OpenAiHelper:
     def __init__(self):
         self.ai = openai
         self.ai.api_key = "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"
-        # self.ai.api_key = "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" # matts api
         
         
     def createBio(self,name,desc):   
