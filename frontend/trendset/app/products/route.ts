@@ -1,8 +1,8 @@
-import { NextApiRequest } from "next"
 import { headers } from 'next/headers'
+import { NextRequest } from "next/server"
  
 
-export async function GET(request: NextApiRequest) {
+export async function GET(request: NextRequest) {
     const head = headers()
     const email = head.get('Authorization')
 
@@ -15,10 +15,10 @@ export async function GET(request: NextApiRequest) {
     return new Response('Hello!',{status: 200})
 }
 
-export async function POST(request: NextApiRequest){
+export async function POST(request: NextRequest){
 
 }
 
-export async function DELETE(request: NextApiRequest){
+export async function DELETE(request: NextRequest){
     
 }
