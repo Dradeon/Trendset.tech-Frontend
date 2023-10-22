@@ -20,8 +20,8 @@ export default function Home() {
                           <div>
                               <Image
                                   src={image}
-                                  width={100}
-                                  height={100}
+                                  width={120}
+                                  height={120}
                                   alt={'image'}
                               />
                           </div>
@@ -52,8 +52,8 @@ export default function Home() {
                       <div className="max-w-4xl text-center">
                           <h2 className="text-3xl font-bold mb-4">About Us</h2>
                           <p className="text-lg text-gray-600">
-                              "Welcome to TrendSet, your gateway to innovative AI marketing tools! Our cutting-edge platform automates the creation of company logos and bios, and seamlessly integrates links to your website and social media pages onto your business card.
-                              Empower your brand and connect with consumers effortlessly – it's a whole new world of marketing!"                          </p>
+                              Welcome to TrendSet, your gateway to innovative AI marketing tools! Our cutting-edge platform automates the creation of company logos and bios, and seamlessly integrates links to your website and social media pages onto your business card.
+                              Empower your brand and connect with consumers effortlessly – it's a whole new world of marketing!                         </p>
 
                       </div>
                   </section>
