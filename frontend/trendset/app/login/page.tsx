@@ -37,7 +37,7 @@ const login = () => {
     
     <div className="max-h-full">
         <nav className="flex justify-between">
-          <a href='/'><h1 className='text-4xl font-bold'>TrendSet.tech</h1></a>
+          <a href='/'><h1 className='text-3xl font-bold'>TRENDSET.TECH</h1></a>
         </nav>
         <div className='mt-4 mb-4 flex flex-col border-2 rounded max-w-xs p-2 mx-auto align-middle'>
           <h1 className='text-4xl font-bold text-center mt-8 mb-8'>Login</h1>
