@@ -83,11 +83,12 @@ def createBio(name, descr):
     helper.createBio()
 
 
-@app.route("/api/makeLogo/<prompt>")
-def createBio(name, descr):
-    pass
+
 
 
 @app.route("/")
 def hello_world():
     return "<p>Hello, World!</p>"
+
+if __name__ == "__main__":
+    app.run()
