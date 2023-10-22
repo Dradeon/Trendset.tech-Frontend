@@ -1,16 +1,17 @@
 from flask import Flask, request
+from flask_cors import CORS
 from Helpers.dbHelperclass import dbHelper as dbh
 from bson import json_util
 import os
 import json
 
 
-
-
 session_key = os.urandom(24).hex()
 
-app = Flask(__name__)
 conn = dbh("mongodb+srv://trendset:FIfRuK42erNOir02@trendset.plb5zxd.mongodb.net","trendset")
+
+app = Flask(__name__)
+cors = CORS(app, resources={r"/api/*": {"origins": "trendset.tech"}})
 
 @app.route("/api/getUser/<email>")
 def getUser(email):
@@ -20,17 +21,20 @@ def getUser(email):
     else:
         return json_util.dumps(connResp)
     
-@app.route("/api/addUser/<user>")
-def addUser(user):
+@app.route("/api/addUser", methods=["POST"])
+def addUser():
     response = request.data
-    new_user = conn.addUser(response)
-    
-        
-    return json_util.dumps(new_user)
+    jstring =  response.decode('utf8').replace("'", '"')
+    data = json.loads(jstring)
+    print(data)
+    conn.addUser(data)
+    return data
 
 @app.route("/api/getUniqueProd/<id>")
 def getUniqueProd(id):
-    connResp = conn.getUser(id)
+    print(id)
+    connResp = conn.getUniqueProduct(int(id))
+    print(connResp)
     if connResp is None:
         return("null")
     else:
@@ -40,6 +44,7 @@ def getUniqueProd(id):
 def addProduct(email):
     response = request.data
     jstring =  response.decode('utf8').replace("'", '"')
+    print(jstring)
     data = json.loads(jstring)
     conn.addProduct(email, data)
     return (data)  
@@ -48,20 +53,32 @@ def addProduct(email):
 
 @app.route("/api/removeProduct/<id>")
 def removeProduct(id):
-    return conn.removeProduct(id)
+    print(id)
+    connResp = conn.removeProduct(int(id))
+    if connResp is None:
+        return("null")
+    else:
+        return json_util.dumps(connResp)
 
 @app.route("/api/updaeProduct/<id>")
-def updateProduct(id, product):
-    product = request.get_json()
-    
-    return conn.updateProduct(id, product)
+def updateProduct(id):
+    response = request.data
+    jstring =  response.decode('utf8').replace("'", '"')
+    print(jstring)
+    data = json.loads(jstring)
+    conn.updateProduct(id=int(id), product=data)
+    return (data)
 
 @app.route("/api/getAllForUser/<email>")
 def getAllForUser(email):
+    print(email)
     result = conn.getAllForUser(email)
-    return result
-    
+    bytes = json_util.dumps(list(result))
+    return bytes
 
+@app.route("/api/createBio/<name>/<descr>")
+def createBio(name, descr):
+    
 
 @app.route("/")
 def hello_world():
