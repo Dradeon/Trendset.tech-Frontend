@@ -54,7 +54,7 @@ const login = () => {
                 <button type="submit" className='pt-2 pb-2 pl-4 pr-4 self-center bg-green-500 font-bold rounded-md'>Login</button>
               </div>
           </form>
-          <span className='m-auto text-center'><p>Already have an account?</p> <a href = "/login" className='underline'>Login to your account.</a></span>
+          <span className='m-auto text-center'><p>Don't have an account?</p> <a href = "/sign_up" className='underline'>Create your account.</a></span>
         </div>
     </div>
   )

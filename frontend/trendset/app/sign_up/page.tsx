@@ -1,5 +1,6 @@
 'use client';
 import { useState, SyntheticEvent } from 'react';
+import BASE_URL from '../../utils/constants'
 import { useMutation } from 'react-query'
 import { useRouter } from 'next/navigation';
 import app from '../../utils/config'
@@ -12,7 +13,7 @@ const page = () => {
     const [lastName, setLastName] = useState<String>('')
     const [email, setEmail] = useState<string>('')
     const [password, setPassword] = useState<string>('')
-    const {mutate} = useMutation(async (variables:{}) => {
+    const {mutate: signUpUser} = useMutation(async (variables:{}) => {
         let result = null
         let error = null
 
@@ -31,11 +32,25 @@ const page = () => {
             router.push('/dashboard')
         }
     })
+    const {mutate: addUser} = useMutation(async (variables:{}) => {
+        return fetch(BASE_URL+'api/addUser',{
+            method: 'POST',
+            headers: {
+                'Access-Control-Allow-Origin': "api.trendset.tech"
+            },
+            body: JSON.stringify({
+                f_name: firstName,
+                l_name: lastName,
+                email: email
+            })
+        })
+    })
     const router = useRouter()
 
     const signUp = async (event: SyntheticEvent) => {
         event.preventDefault()
-        mutate({})
+        addUser({})
+        signUpUser({})
     }
 
   return (
