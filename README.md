@@ -1,3 +1,21 @@
+# trendset.tech
+
+
+## Instructions For Running On Local Machine
+
+Run the following command to install the Python dependencies (Python 3.9.6+):
+```
+pip3 install -r backend/requirements.txt 
+```
+
+navigate to frontend/trendset/app to tun the web server locally
+```
+cd frontend/trendset/app
+npm rn dev
+```
+
+visit [127.0.0.1:3000 ](http://localhost:3000/) to view the webste
+
 ## Inspiration
 The inspiration came from LinkTree. We wanted to help automate the process of logo generation and bio creation in a fun way with AI! Trend Set provides a streamlined and efficient way for small businesses to jump-start their marketing campaign, so they can go back to doing what really matters—providing value to their customers.
 
