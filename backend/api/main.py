@@ -13,7 +13,7 @@ conn = dbh("mongodb+srv://trendset:FIfRuK42erNOir02@trendset.plb5zxd.mongodb.net
 helper = OpenAiHelper()
 
 app = Flask(__name__)
-cors = CORS(app, resources={r"/api/*": {"origins": "trendset.tech"}})
+cors = CORS(app, resources={r"/api/*": {"origins": ["https://trendset.tech:443","http://localhost:3000"]}})
 
 @app.route("/api/getUser/<email>")
 def getUser(email):
@@ -105,3 +105,6 @@ def makeLogo():
 @app.route("/")
 def hello_world():
     return "<p>Hello, World!</p>"
+
+if __name__ == "__main__":
+    app.run(host="0.0.0.0")
