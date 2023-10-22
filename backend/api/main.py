@@ -78,7 +78,7 @@ def getAllForUser(email):
     bytes = json_util.dumps(list(result))
     return bytes
 
-@app.route("/api/createBio/")
+@app.route("/api/createBio/" ,methods=['POST'])
 def createBio():
     response = request.get_json()
     print(response)
@@ -90,7 +90,7 @@ def createBio():
     return helper.createBio(name, desc)
 
 
-@app.route("/api/makeLogo")
+@app.route("/api/makeLogo",methods=['POST'])
 def makeLogo():
     response = request.data
     jstring =  response.decode('utf8').replace("'", '"')
