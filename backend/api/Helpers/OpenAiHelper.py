@@ -2,9 +2,11 @@ import openai
 class OpenAiHelper:
     def __init__(self):
         self.ai = openai
-        pass
+        self.ai.api_key = "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"
+        # self.ai.api_key = "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" # matts api
+        
+        
     def createBio(self,name,desc):   
-        self.ai.api_key = "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"      
         completion = self.ai.ChatCompletion.create(model="gpt-3.5-turbo", messages=[
             {
                 "role": "user",
